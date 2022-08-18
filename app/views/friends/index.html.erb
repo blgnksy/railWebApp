@@ -9,19 +9,24 @@
         <th>Last Name</th>
         <th>Email</th>
         <th>Phone</th>
+        <th>User Id</th>
         <th>Actions</th>
       </tr>
     </thead>
     <tbody>    
       <% @friends.each do |friend| %>
+      <% if friend.user == current_user %>
         <tr>
           <td><%= dom_id friend %> </td>
           <td><%= friend.first_name %></td>
           <td><%= friend.last_name %></td>
           <td><%= friend.email %></td>
           <td><%= friend.phone %></td>
-          <td><%= link_to "Show", friend %> <%= link_to "Edit this friend", edit_friend_path(friend.id)%> <%= link_to "Delete", friend, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm"%></td>
+          <td><%= friend.user_id %></td>
+          <td><%= link_to "Show", friend %>
+          <% if friend.user == current_user %> <%= link_to "Edit this friend", edit_friend_path(friend.id)%> <%= link_to "Delete", friend, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm"%> <% end %></td>
         </tr>
+      <% end %>
       <% end %>
     <tbody>
   </table>

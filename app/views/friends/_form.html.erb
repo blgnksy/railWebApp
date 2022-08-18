@@ -30,7 +30,9 @@
     <%= form.label :phone, style: "display: block" %>
     <%= form.text_field :phone %>
   </div>
-
+  <div>
+    <%= form.number_field :user_id, value:current_user.id, id: :friend_user_id, type: :hidden %>
+  </div>
   <div>
     <%= form.submit %>
   </div>
